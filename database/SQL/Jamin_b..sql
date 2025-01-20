@@ -118,13 +118,13 @@ INSERT INTO Contact (Id, Straat, Huisnummer, Postcode, Stad) VALUES
 (5, 'Leon van Bonstraat', 213, '145XC', 'Lunteren'),
 (6, 'Bea van Lingenlaan', 234, '2197FG', 'Sint Pancras');
 
-INSERT INTO Leverancier (Id, Naam, ContactPersoon, LeverancierNummer, Mobiel, ContactId) VALUES
-(1, 'Venco', 'Bert van Linge', 'L1029384719', '06-28493827', 1),
-(2, 'Astra Sweets', 'Jasper del Monte', 'L1029284315', '06-39398734', 2),
-(3, 'Haribo', 'Sven Stalman', 'L1029324748', '06-24383291', 3),
-(4, 'Basset', 'Joyce Stelterberg', 'L1023845773', '06-48293823', 4),
-(5, 'De Bron', 'Remco Veenstra', 'L1023857736', '06-34291234', 5),
-(6, 'Quality Street', 'Johan Nooij', 'L1029234586', '06-23458456', 6);
+INSERT INTO Leverancier (Id, Naam, ContactPersoon, LeverancierNummer, Mobiel, ContactId, IsActief) VALUES
+(1, 'Venco', 'Bert van Linge', 'L1029384719', '06-28493827', 1, TRUE),
+(2, 'Astra Sweets', 'Jasper del Monte', 'L1029284315', '06-39398734', 2, FALSE),
+(3, 'Haribo', 'Sven Stalman', 'L1029324748', '06-24383291', 3, TRUE),
+(4, 'Basset', 'Joyce Stelterberg', 'L1023845773', '06-48293823', 4, FALSE),
+(5, 'De Bron', 'Remco Veenstra', 'L1023857736', '06-34291234', 5, TRUE),
+(6, 'Quality Street', 'Johan Nooij', 'L1029234586', '06-23458456', 6, TRUE);
 
 INSERT INTO ProductPerLeverancier (Id, LeverancierId, ProductId, DatumLevering, Aantal, DatumEerstVolgendeLevering) VALUES
 (1, 1, 1, '2024-11-09', 23, '2024-11-16'),

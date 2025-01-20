@@ -70,14 +70,15 @@ class SupplierController extends Controller
             'Huisnummer' => 'required|integer',
             'Postcode' => 'required|string|max:6',
             'Stad' => 'required|string|max:100',
+            'IsActief' => 'required|boolean',
         ]);
-    
+
         try {
-            // Simulate a technical error when mobile number is changed to 06-39398825
-            if ($request->Mobiel === '06-39398825') {
+            // Simulate a technical error when supplier is being deactivated
+            if ($request->IsActief === false) {
                 throw new \Exception('Door een technische storing is het niet mogelijk de wijziging door te voeren. Probeer het op een later moment nog eens.');
             }
-    
+
             DB::transaction(function () use ($request, $supplier) {
                 // Update contact information
                 $supplier->contact->update([
@@ -86,16 +87,17 @@ class SupplierController extends Controller
                     'Postcode' => $request->Postcode,
                     'Stad' => $request->Stad,
                 ]);
-    
+
                 // Update supplier information
                 $supplier->update([
                     'Naam' => $request->Naam,
                     'ContactPersoon' => $request->ContactPersoon,
                     'LeverancierNummer' => $request->LeverancierNummer,
                     'Mobiel' => $request->Mobiel,
+                    'IsActief' => $request->IsActief,
                 ]);
             });
-    
+
             return redirect()->route('suppliers.show', $supplier->Id)
                 ->with('success', 'Leverancier succesvol bijgewerkt.');
         } catch (\Exception $e) {
@@ -103,7 +105,7 @@ class SupplierController extends Controller
                 ->with('error', $e->getMessage())
                 ->withInput();
         }
-    }
+    }   
 
     public function deleteProduct($supplierId, $productId)
     {
