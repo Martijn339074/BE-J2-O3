@@ -75,7 +75,7 @@ class SupplierController extends Controller
 
         try {
             // Simulate a technical error when supplier is being deactivated
-            if ($request->IsActief === false) {
+            if ($request->boolean('IsActief') === false) {
                 throw new \Exception('Door een technische storing is het niet mogelijk de wijziging door te voeren. Probeer het op een later moment nog eens.');
             }
 
@@ -94,7 +94,7 @@ class SupplierController extends Controller
                     'ContactPersoon' => $request->ContactPersoon,
                     'LeverancierNummer' => $request->LeverancierNummer,
                     'Mobiel' => $request->Mobiel,
-                    'IsActief' => $request->IsActief,
+                    'IsActief' => $request->boolean('IsActief'),
                 ]);
             });
 
@@ -105,7 +105,7 @@ class SupplierController extends Controller
                 ->with('error', $e->getMessage())
                 ->withInput();
         }
-    }   
+    }
 
     public function deleteProduct($supplierId, $productId)
     {

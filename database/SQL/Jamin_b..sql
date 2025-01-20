@@ -39,6 +39,7 @@ CREATE TABLE Leverancier (
     ContactPersoon VARCHAR(100) NOT NULL,
     LeverancierNummer VARCHAR(11) NOT NULL,
     Mobiel VARCHAR(11) NOT NULL,
+     IsActief BOOLEAN DEFAULT TRUE,
     ContactId INT NOT NULL,
     FOREIGN KEY (ContactId) REFERENCES Contact(Id)
 );

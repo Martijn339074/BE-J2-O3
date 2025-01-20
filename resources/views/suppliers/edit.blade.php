@@ -93,6 +93,20 @@
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
+
+                    <div class="mb-3">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input @error('IsActief') is-invalid @enderror" 
+                                   id="IsActief" name="IsActief" value="1"
+                                   {{ old('IsActief', $supplier->IsActief) ? 'checked' : '' }}>
+                            <label class="form-check-label" for="IsActief">Actief</label>
+                            @error('IsActief')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <input type="hidden" name="IsActief" value="0">
+                    </div>
                 </div>
             </div>
 
