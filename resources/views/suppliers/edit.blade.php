@@ -96,6 +96,7 @@
 
                     <div class="mb-3">
                         <div class="form-check">
+                            <input type="hidden" name="IsActief" value="0">
                             <input type="checkbox" class="form-check-input @error('IsActief') is-invalid @enderror" 
                                    id="IsActief" name="IsActief" value="1"
                                    {{ old('IsActief', $supplier->IsActief) ? 'checked' : '' }}>
@@ -104,8 +105,6 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-
-                        <input type="hidden" name="IsActief" value="0">
                     </div>
                 </div>
             </div>
